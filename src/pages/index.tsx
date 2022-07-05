@@ -88,14 +88,20 @@ const Index = ({ posts = [], preview }) => {
                             <a className="postCTA">Chega Mais</a>
                           </Link>
                         </div>
+
                         <div className="cover-container">
                           {post.Thumb.length > 0 && (
-                            <Comp
-                              key={post.id}
-                              src={post.Thumb}
-                              alt={post.Alt}
-                              className="cover"
-                            />
+                            <Link
+                              href={getBlogLink(post.Slug)}
+                              as={getBlogLink(post.Slug)}
+                            >
+                              <Comp
+                                key={post.id}
+                                src={post.Thumb}
+                                alt={post.Alt}
+                                className="cover"
+                              />
+                            </Link>
                           )}
                         </div>
                       </div>
