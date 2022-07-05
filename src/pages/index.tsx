@@ -42,12 +42,12 @@ const Index = ({ posts = [], preview }) => {
 
         <div className="cases">
           <div className="cases-wrapper">
-            <div className="case-container mude-cases">
+            <div className="case-container">
               <div className="content-list">
                 {posts.map((post) => {
                   ///////////////////////////////
-                  // MUDE LOOP
-                  if (post.Project == 'mude') {
+                  // PODCAST LOOP
+                  if (post.Project == 'podcast') {
                     return (
                       <div className={'postPreview'} key={post.Slug}>
                         <div className="content-container">
@@ -60,9 +60,13 @@ const Index = ({ posts = [], preview }) => {
                                 href={getBlogLink(post.Slug)}
                                 as={getBlogLink(post.Slug)}
                               >
-                                <a>
-                                  {post.Page} <FiArrowUpRight />
-                                </a>
+                                <a className="post-number">{post.Number}</a>
+                              </Link>
+                              <Link
+                                href={getBlogLink(post.Slug)}
+                                as={getBlogLink(post.Slug)}
+                              >
+                                <a>{post.Page}</a>
                               </Link>
                             </span>
                           </h3>
@@ -75,6 +79,13 @@ const Index = ({ posts = [], preview }) => {
                                 <div className="tag">#{post.Type}</div>
                               )}
                             </a>
+                          </Link>
+                          <p className="preview-text">{post.Preview}</p>
+                          <Link
+                            href={getBlogLink(post.Slug)}
+                            as={getBlogLink(post.Slug)}
+                          >
+                            <a className="postCTA">Chega Mais</a>
                           </Link>
                         </div>
                         <div className="cover-container">
@@ -92,62 +103,6 @@ const Index = ({ posts = [], preview }) => {
                   }
                 })}
               </div>
-              <div className="bg-container"></div>
-            </div>
-          </div>
-
-          <div className="cases-wrapper">
-            <div className="case-container futuur-cases">
-              <div className="content-list">
-                {posts.map((post) => {
-                  ///////////////////////////////
-                  // FUTUUR LOOP
-                  if (post.Project == 'futuur') {
-                    return (
-                      <div className={'postPreview'} key={post.Slug}>
-                        <div className="content-container">
-                          <h3>
-                            <span className={'titleContainer'}>
-                              {!post.Published && (
-                                <span className={'draftBadge'}>Draft</span>
-                              )}
-                              <Link
-                                href={getBlogLink(post.Slug)}
-                                as={getBlogLink(post.Slug)}
-                              >
-                                <a>
-                                  {post.Page} <FiArrowUpRight />
-                                </a>
-                              </Link>
-                            </span>
-                          </h3>
-                          <Link
-                            href={getCategoryLink(post.Type)}
-                            as={getCategoryLink(post.Type)}
-                          >
-                            <a>
-                              {post.Type && (
-                                <div className="tag">#{post.Type}</div>
-                              )}
-                            </a>
-                          </Link>
-                        </div>
-                        <div className="cover-container">
-                          {post.Thumb.length > 0 && (
-                            <Comp
-                              key={post.id}
-                              src={post.Thumb}
-                              alt={post.Alt}
-                              className="cover"
-                            />
-                          )}
-                        </div>
-                      </div>
-                    )
-                  }
-                })}
-              </div>
-              <div className="bg-container"></div>
             </div>
           </div>
 
@@ -157,7 +112,7 @@ const Index = ({ posts = [], preview }) => {
                 {posts.map((post) => {
                   ///////////////////////////////
                   // OTHER WORK LOOP
-                  if (post.Project != 'futuur' && post.Project != 'mude') {
+                  if (post.Project != 'podcast') {
                     return (
                       <div className={'postPreview'} key={post.Slug}>
                         <div className="content-container">

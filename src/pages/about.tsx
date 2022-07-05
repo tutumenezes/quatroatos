@@ -13,6 +13,7 @@ import {
 import PageBlocks from '../components/PageBlocks'
 import { FiArrowUpRight } from 'react-icons/fi'
 import { Loading } from '../components/Loading'
+import Nav from '../components/nav'
 
 type PostData = BlogTableRow & {
   content?: PageBlock[]
@@ -121,7 +122,7 @@ const RenderAbout: FC<Props> = ({ post, redirect, preview }) => {
       )}
 
       <div className={'blog-post'}>
-        <div className="blog-post-header main-container">
+        {/* <div className="blog-post-header main-container">
           <div className="breadcrumbs" aria-label="breadcrumbs">
             {post.Type ? (
               <>
@@ -165,20 +166,10 @@ const RenderAbout: FC<Props> = ({ post, redirect, preview }) => {
             )}
           </div>
           <h1>{post.Page || ''}</h1>
-        </div>
-
-        {post.Cover && (
-          <div className="cover-image">
-            <Comp
-              key={post.id}
-              src={post.Cover}
-              alt={post.AltText ? post.AltText : 'cover do post ' + post.Page}
-              className="Cover"
-            />
-          </div>
-        )}
+        </div> */}
 
         <div className="post-content main-container">
+          <Nav />
           <PageBlocks blocks={post.content} />
         </div>
       </div>

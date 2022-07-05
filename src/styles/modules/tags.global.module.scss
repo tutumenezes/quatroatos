@@ -32,7 +32,7 @@
       width: 100%;
       font-family: $font-sans;
       font-weight: $font-weight--medium;
-      text-transform: capitalize;
+      text-transform: uppercase;
       margin-top: 16px;
 
       @include desktop {
@@ -96,8 +96,8 @@
 
 .tag {
   font-family: $font-sans;
-  text-transform: lowercase;
-  font-weight: $font-weight--regular;
+  text-transform: uppercase;
+  font-weight: $font-weight--bold;
 
   margin-top: 8px;
   font-size: $font-size--small;

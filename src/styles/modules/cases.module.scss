@@ -42,6 +42,7 @@
 
       .content-list {
         display: flex;
+        width: 100%;
         justify-content: center;
         align-items: flex-start;
         flex-direction: column;
@@ -56,15 +57,19 @@
 
         .postPreview {
           display: flex;
-          justify-content: space-between;
+          align-items: center;
 
           @include desktop {
-            margin-bottom: 32px;
-            padding-right: 10%;
+            width: 100%;
+            margin-bottom: 128px;
+            justify-content: space-between;
+            flex-direction: row;
           }
 
           @include mobile {
             margin-top: 32px;
+            flex-direction: column-reverse;
+            margin-bottom: 64px;
             width: unset;
           }
 
@@ -73,31 +78,36 @@
           }
 
           .content-container {
+            @include desktop {
+              width: 50%;
+              padding-right: 32px;
+            }
+
             h3 {
               display: inline-block;
+              word-break: break-word;
 
               .titleContainer a {
                 font-family: $font-serif;
-                font-weight: $font-weight--bold;
-                text-transform: capitalize;
+                font-weight: 800;
+                font-size: 30px;
                 transition: all 0.2s $easing-bezier-fast;
                 text-decoration: none;
 
+                &.post-number {
+                  font-weight: 100;
+                  display: inline-block;
+                  margin-right: 12px;
+                }
+
                 @include desktop {
-                  font-size: $font-size--medium;
+                  font-style: italic;
                   letter-spacing: 0.05em;
                 }
 
                 @include mobile {
                   font-size: $font-size--medium;
                   letter-spacing: 0.05em;
-                }
-
-                svg {
-                  position: relative;
-                  width: auto;
-                  transition: all 0.2s $easing-bezier-fast;
-                  height: 14px;
                 }
 
                 &:hover {
@@ -121,59 +131,46 @@
                 color: t($text-secondary);
               }
             }
+
+            .preview-text {
+              margin: 16px 0 32px 0;
+              font-family: $font-sans;
+              font-size: 18px;
+              line-height: 1.2em;
+              font-weight: $font-weight--regular;
+              @include themed() {
+                color: t($text);
+              }
+            }
+            .postCTA {
+              font-family: $font-sans;
+              font-size: 18px;
+              text-transform: uppercase;
+              text-decoration: underline;
+              font-weight: $font-weight--bold;
+              @include themed() {
+                color: t($primary);
+              }
+            }
           }
           .cover-container {
             background: transparent;
             width: 50%;
-            height: 100%;
-            position: absolute;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            margin: auto;
+            max-height: 400px;
+            position: relative;
             overflow: hidden;
 
             img {
               width: 100%;
               height: auto;
               position: absolute;
-              top: 32px;
             }
 
             @include mobile {
-              display: none;
+              width: 100%;
+              margin-bottom: 24px;
             }
           }
-        }
-      }
-      .bg-container {
-        @include desktop {
-          width: 50%;
-          height: auto;
-          padding-top: 56.25%;
-          margin: 0;
-        }
-      }
-
-      &.mude-cases {
-        .content-list {
-          @include desktop {
-            width: 50%;
-          }
-        }
-        .bg-container {
-          background-color: $color-project-mude;
-        }
-      }
-
-      &.futuur-cases {
-        .content-list {
-          @include desktop {
-            width: 50%;
-          }
-        }
-        .bg-container {
-          background-color: $color-project-futuur;
         }
       }
 
@@ -187,18 +184,27 @@
         }
 
         .content-list {
+          width: 100%;
           display: flex;
-          flex-direction: row;
-          max-width: unset;
           flex-wrap: wrap;
+
           @include desktop {
-            justify-content: flex-start;
+            justify-content: space-between;
           }
 
           .postPreview {
-            display: inline-block;
+            margin-bottom: 32px;
+            border-bottom: 1px solid $color-outline;
+            padding-bottom: 32px;
+
             @include desktop {
-              width: 50%;
+              display: inline-block;
+              flex-direction: row;
+              width: 100%;
+            }
+            @include mobile {
+              display: flex;
+              flex-direction: column;
             }
           }
         }

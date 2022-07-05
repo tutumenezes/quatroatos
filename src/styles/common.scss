@@ -13,6 +13,12 @@ body {
   overflow-x: hidden;
 }
 
+.spotify {
+  @include themed() {
+    fill: t($text);
+  }
+}
+
 .main-container {
   max-width: 50rem;
   margin: 0 auto;

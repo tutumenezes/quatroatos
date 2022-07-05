@@ -1,6 +1,5 @@
 import { useTheme } from 'next-themes'
-import { FiSun } from 'react-icons/fi'
-import { FiMoon } from 'react-icons/fi'
+import { FiZap, FiZapOff } from 'react-icons/fi'
 import ReactTooltip from 'react-tooltip'
 
 const ThemeToggle = () => {
@@ -12,14 +11,14 @@ const ThemeToggle = () => {
       {theme == 'dark' ? (
         <>
           <button data-tip="Toggle Dark Mode" onClick={() => setTheme('light')}>
-            <FiSun />
+            <FiZap />
           </button>
           <ReactTooltip place="bottom" type="light" effect="solid" />
         </>
       ) : (
         <>
           <button data-tip="Toggle Dark Mode" onClick={() => setTheme('dark')}>
-            <FiMoon />
+            <FiZapOff />
           </button>
           <ReactTooltip place="bottom" type="dark" effect="solid" />
         </>

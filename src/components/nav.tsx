@@ -5,12 +5,10 @@ import { useTheme } from 'next-themes'
 
 import ThemeToggle from './themetoggle'
 import ReactTooltip from 'react-tooltip'
-import { FiFeather, FiHome } from 'react-icons/fi'
+import { FiCornerDownLeft, FiInfo } from 'react-icons/fi'
+import Spotify from './svgs/spotify'
 
-const navItems: { label: string; page?: string; link?: string }[] = [
-  { label: 'About', page: '/about' },
-  { label: 'Home', page: '/' },
-]
+const spotify = 'https://open.spotify.com/show/3uMvgtj9OunqRfid1mkFwd'
 
 const Nav = ({ titlePre = '' }) => {
   const { pathname } = useRouter()
@@ -19,11 +17,24 @@ const Nav = ({ titlePre = '' }) => {
   return (
     <div className="nav">
       <ul>
+        <li className="nav-list-item spotify" key={'spotify'}>
+          {spotify && (
+            <a
+              className="spotify"
+              href={`${spotify}`}
+              title={`Spotify 4 Atos`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Spotify />
+            </a>
+          )}
+        </li>
         {pathname === '/about' && (
           <li className="nav-list-item" key={'about'}>
             <Link href={'/'} as={'/'}>
               <a data-tip={'Home'} className={'active'}>
-                <FiHome />
+                <FiCornerDownLeft />
                 {theme == 'dark' ? (
                   <ReactTooltip place="bottom" type="light" effect="solid" />
                 ) : (
@@ -37,7 +48,7 @@ const Nav = ({ titlePre = '' }) => {
           <li className="nav-list-item" key={'about'}>
             <Link href={'/about'} as={'/about'}>
               <a data-tip={'About'} className={'active'}>
-                <FiFeather />
+                <FiInfo />
                 {theme == 'dark' ? (
                   <ReactTooltip place="bottom" type="light" effect="solid" />
                 ) : (

@@ -1,9 +1,11 @@
 import Link from 'next/link'
+import ExtLink from '../components/ext-link'
 import { useRouter } from 'next/router'
 import Header from '../components/header'
 import getPageData, { PageBlock } from '../lib/notion/getPageData'
 import React, { FC, useEffect } from 'react'
 import getBlogIndex, { BlogTableRow } from '../lib/notion/getBlogIndex'
+import Nav from '../components/nav'
 import {
   getBlogLink,
   getDateStr,
@@ -13,6 +15,7 @@ import {
 import PageBlocks from '../components/PageBlocks'
 import { FiArrowUpRight } from 'react-icons/fi'
 import { Loading } from '../components/Loading'
+import Spotify from '../components/svgs/spotify'
 
 type PostData = BlogTableRow & {
   content?: PageBlock[]
@@ -156,7 +159,7 @@ const RenderPost: FC<Props> = ({ post, redirect, preview }) => {
       <Header
         titlePre={post.Page}
         dynamicOgImageURL={post.ogImage}
-        preview={post.ogPreview}
+        preview={post.Preview}
         updatedTime={post.Date.toString()}
         ogSlug={post.Slug}
         ogImageAlt={post.AltText}
@@ -175,65 +178,85 @@ const RenderPost: FC<Props> = ({ post, redirect, preview }) => {
       )}
 
       <div className={'blog-post'}>
-        <div className="blog-post-header main-container">
-          <div className="breadcrumbs" aria-label="breadcrumbs">
-            {post.Type ? (
-              <>
-                <ol>
-                  <li>
-                    <Link href="/" as="/">
-                      <a aria-label="Go to Homepage">Home</a>
-                    </Link>
-                  </li>
-                  {post.Type && (
-                    <li>
-                      <Link
-                        href={getCategoryLink(post.Type.toString())}
-                        as={getCategoryLink(post.Type.toString())}
-                      >
-                        <a aria-label={'Go to type: ' + post.Type}>
-                          {post.Type && post.Type}
-                        </a>
-                      </Link>
-                    </li>
-                  )}
-                  {post.Type.toString() === 'case' &&
-                  post.Project.toString() ? (
-                    <li>
-                      <Link
-                        href={getProjectLink(post.Project.toString())}
-                        as={getProjectLink(post.Project.toString())}
-                      >
-                        <a aria-label={'Go to type: ' + post.Project}>
-                          {post.Project && post.Project}
-                        </a>
-                      </Link>
-                    </li>
-                  ) : (
-                    ''
-                  )}
-                </ol>
-              </>
-            ) : (
-              ''
-            )}
+        <div className="main-header">
+          <div className="blog-post-header">
+            <div className="blog-post-header-content">
+              <div className="breadcrumbs" aria-label="breadcrumbs">
+                {post.Type ? (
+                  <>
+                    <ol>
+                      <li>
+                        <Link href="/" as="/">
+                          <a aria-label="Go to Homepage">Home</a>
+                        </Link>
+                      </li>
+                      {post.Type && (
+                        <li>
+                          <Link
+                            href={getCategoryLink(post.Type.toString())}
+                            as={getCategoryLink(post.Type.toString())}
+                          >
+                            <a aria-label={'Go to type: ' + post.Type}>
+                              {post.Type && post.Type}
+                            </a>
+                          </Link>
+                        </li>
+                      )}
+                      {post.Type.toString() === 'case' &&
+                      post.Project.toString() ? (
+                        <li>
+                          <Link
+                            href={getProjectLink(post.Project.toString())}
+                            as={getProjectLink(post.Project.toString())}
+                          >
+                            <a aria-label={'Go to type: ' + post.Project}>
+                              {post.Project && post.Project}
+                            </a>
+                          </Link>
+                        </li>
+                      ) : (
+                        ''
+                      )}
+                    </ol>
+                  </>
+                ) : (
+                  ''
+                )}
+              </div>
+              {post.Number && <h3>— {post.Number || ''}</h3>}
+              <h1>{post.Page || ''}</h1>
+              {post.Date && <div className="year">{getDateStr(post.Date)}</div>}
+              <Nav />
+            </div>
+            <div className="bg-color"></div>
           </div>
-          <h1>{post.Page || ''}</h1>
-          {post.Date && <div className="year">{getDateStr(post.Date)}</div>}
+
+          {post.Cover && (
+            <div className="cover-image">
+              <Comp
+                key={post.id}
+                src={post.Cover}
+                alt={post.AltText ? post.AltText : 'cover do post ' + post.Page}
+                className="Cover"
+              />
+            </div>
+          )}
         </div>
 
-        {post.Cover && (
-          <div className="cover-image">
-            <Comp
-              key={post.id}
-              src={post.Cover}
-              alt={post.AltText ? post.AltText : 'cover do post ' + post.Page}
-              className="Cover"
-            />
-          </div>
+        {post.Link && (
+          <>
+            <ExtLink href={post.Link} as={post.Link}>
+              <div className="podcast-link">
+                <a>
+                  <Spotify />
+                  Escute o episódio
+                </a>
+              </div>
+            </ExtLink>
+          </>
         )}
 
-        <div className="post-content">
+        <div className="post-content main-container">
           <PageBlocks blocks={post.content} />
         </div>
 

@@ -1,12 +1,9 @@
-import { FiSend } from 'react-icons/fi'
-import { FiGithub } from 'react-icons/fi'
-import { FiLinkedin } from 'react-icons/fi'
-import { FiTwitter } from 'react-icons/fi'
+import { FiSend, FiTwitter } from 'react-icons/fi'
+import Spotify from './svgs/spotify'
 
-const twitter = 'tutumenezes'
-const github = 'tutumenezes'
-const linkedin = 'tutumenezes'
-const email = 'tutumenezes@hub9.co'
+const twitter = 'irwingoliveira'
+const email = 'rangelirwing@gmail.com'
+const spotify = 'https://open.spotify.com/show/3uMvgtj9OunqRfid1mkFwd'
 
 export default function Footer() {
   return (
@@ -14,9 +11,22 @@ export default function Footer() {
       <footer className="footer">
         <div className="container">
           <div className="copyright">
-            Written and Built by tutumenezes in 2022 • Hit me up!
+            Blog feito em 2022, todos os direitos reservados • Entre em contato
+            :D
           </div>
           <div className="social">
+            {spotify && (
+              <a
+                className="spotify"
+                href={`${spotify}`}
+                title={`Spotify 4 Atos`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Spotify className="social-icon" />
+              </a>
+            )}
+
             {twitter && (
               <a
                 className="twitter"
@@ -26,30 +36,6 @@ export default function Footer() {
                 rel="noopener noreferrer"
               >
                 <FiTwitter className="social-icon" />
-              </a>
-            )}
-
-            {github && (
-              <a
-                className="github"
-                href={`https://github.com/${github}`}
-                title={`GitHub @${github}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FiGithub className="social-icon" />
-              </a>
-            )}
-
-            {linkedin && (
-              <a
-                className="linkedin"
-                href={`https://www.linkedin.com/in/${linkedin}`}
-                title={`LinkedIn ${linkedin}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FiLinkedin className="social-icon" />
               </a>
             )}
 

@@ -11,7 +11,9 @@ const formatValue = (key: string, value) => {
     case 'Slug':
     case 'CTA':
     case 'AltText':
-    case 'ogPreview':
+    case 'Preview':
+    case 'Number':
+    case 'Link':
       return value.rich_text.map((item) => item.plain_text).join('')
 
     case 'Cover':
@@ -44,11 +46,13 @@ const formatValue = (key: string, value) => {
 export type BlogTableRow = {
   id: string
   Slug?: string
+  Link?: string
   Cover?: string
   Thumb?: string
   CTA?: string
-  ogPreview?: string
+  Preview?: string
   Date?: number
+  Number?: number
   ogImage?: string
   AltText?: string
   Published?: boolean

@@ -3,29 +3,123 @@
     padding: 0 16px;
   }
 
-  .blog-post-header {
-    padding-bottom: 32px;
+  .main-header {
+    display: flex;
 
-    h1 {
-      font-family: $font-headline;
-      font-weight: $font-weight--bold;
-      text-transform: capitalize;
-      font-size: $font-size--extra-large;
-      @include themed() {
-        color: t($text);
-      }
+    @include desktop {
+      flex-direction: row-reverse;
+      align-items: center;
     }
-    .year {
-      font-family: $font-sans;
-      font-weight: $font-weight--bold;
-      font-size: $font-size--small;
-      margin-top: 16px;
 
-      @include themed() {
-        color: t($text-secondary);
+    @include mobile {
+      flex-direction: column-reverse;
+    }
+
+    .blog-post-header {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: start;
+
+      @include desktop {
+        width: 50%;
+        padding-left: 64px;
+      }
+      h3 {
+        font-family: $font-serif;
+        font-weight: $font-weight--thin;
+        text-transform: capitalize;
+        margin: unset;
+        @include desktop {
+          padding-right: 25%;
+        }
+        font-size: 30px;
+        @include themed() {
+          color: t($text);
+        }
+      }
+      h1 {
+        font-family: $font-headline;
+        font-weight: $font-weight--bold;
+        text-transform: capitalize;
+        margin: unset;
+        @include desktop {
+          padding-right: 25%;
+        }
+        font-size: $font-size--extra-large;
+        @include themed() {
+          color: t($text);
+        }
+      }
+      .year {
+        font-family: $font-sans;
+        font-weight: $font-weight--bold;
+        font-size: $font-size--small;
+        margin-top: 16px;
+        margin-bottom: 32px;
+
+        @include themed() {
+          color: t($text-secondary);
+        }
+      }
+      //hotfix
+      .spotify {
+        margin-right: 5px;
       }
     }
   }
+  .blog-post-header {
+    position: relative;
+
+    @include desktop {
+      height: 500px;
+    }
+
+    @include mobile {
+      height: 300px;
+    }
+
+    .blog-post-header-content {
+      z-index: 100;
+
+      @include desktop {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        margin: 0 auto;
+        padding-left: 64px;
+      }
+
+      @include mobile {
+      }
+
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+    }
+
+    .bg-color {
+      position: absolute;
+      background-color: rgba(223, 182, 65, 0.25);
+
+      height: 570px;
+      width: 100%;
+      z-index: 0;
+
+      top: 0;
+      bottom: 0;
+      left: -100px;
+
+      margin: 0 auto;
+
+      @include mobile {
+        display: none;
+      }
+    }
+  }
+
   .cover-image {
     overflow: hidden;
     position: relative;
@@ -34,25 +128,24 @@
 
     @include desktop {
       max-width: 90rem;
-      width: 100%;
+      width: 50%;
+      height: 500px;
+      position: relative;
+      margin-top: 100px;
+      img {
+        position: absolute;
+        width: auto;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+      }
     }
 
     @include mobile {
       max-width: 100%;
       width: 100%;
-    }
-
-    img {
-      width: 100%;
-      height: auto;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: auto;
-    }
-
-    @include mobile {
       margin-bottom: 32px;
 
       img {
@@ -61,13 +154,53 @@
       }
     }
   }
+
+  .podcast-link {
+    margin: 32px auto;
+    height: 100px;
+    width: 100%;
+    max-width: 50rem;
+    background-color: $color-primary;
+    border-radius: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    &:hover {
+      filter: brightness(90%);
+      cursor: pointer;
+    }
+
+    a {
+      font-family: $font-sans;
+      font-weight: $font-weight--bold;
+      text-transform: uppercase;
+      color: #fff;
+      text-align: center;
+      padding-left: 25px;
+    }
+
+    svg {
+      height: 43px;
+      width: auto;
+      fill: #fff;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 32px;
+      margin: auto 0;
+    }
+  }
+
   .post-content {
     h1 {
       font-family: $font-serif;
       font-size: $font-size--extra-large;
       font-weight: $font-weight--thin;
       line-height: 1.1em;
-      margin: 1em auto;
+      margin: 0.5em 0;
 
       @include themed() {
         color: t($text);
@@ -445,6 +578,6 @@
   .callout,
   audio {
     max-width: 50rem;
-    margin: 1em auto;
+    margin: 0.5em 0;
   }
 }

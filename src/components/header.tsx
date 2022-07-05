@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import Nav from './nav'
+import Logo from './svgs/logo'
 
 const domain = process.env.NEXT_PUBLIC_GTM_DOMAIN
 const ogImageUrl =
@@ -76,11 +76,11 @@ const Header = ({
           property="og:url"
           content={
             ogSlug
-              ? 'https://tutumenezes.com/' + ogSlug
-              : 'https://tutumenezes.com'
+              ? 'https://quatroatos.com/' + ogSlug
+              : 'https://quatroatos.com'
           }
         />
-        <meta name="twitter:site" content="@tutumenezes" />
+        <meta name="twitter:site" content="@irwingoliveira" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:image"
@@ -114,14 +114,13 @@ const Header = ({
             <a
               className="site-logo"
               title={
-                'Tutu Menezes - click here to scroll to top or go to homepage'
+                'Quatro Atos - click here to scroll to top or go to homepage'
               }
             >
-              tutu menezes
+              <Logo />
             </a>
           </Link>
         </h1>
-        <Nav />
       </div>
     </header>
   )
