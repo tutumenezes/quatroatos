@@ -49,7 +49,7 @@ const Header = ({
         <title>{titlePre ? `${titlePre} |` : ''} Quatro Atos </title>
         <meta
           name="description"
-          content="design portfolio: digital, product, code, interactive installations and more"
+          content="Sua Revista Semanal sobre Filmes e séries"
         />
         <meta
           name="og:title"
