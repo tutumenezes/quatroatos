@@ -46,24 +46,22 @@ const Header = ({
   return (
     <header className={'header'}>
       <Head>
-        <title>{titlePre ? `${titlePre} |` : ''} Tutu Menezes </title>
+        <title>{titlePre ? `${titlePre} |` : ''} Quatro Atos </title>
         <meta
           name="description"
           content="design portfolio: digital, product, code, interactive installations and more"
         />
         <meta
           name="og:title"
-          content={titlePre ? titlePre + ' | Tutu Menezes' : 'Tutu Menezes'}
+          content={titlePre ? titlePre + ' | Quatro Atos' : 'Quatro Atos'}
         />
         <meta
           property="og:description"
           content={
-            preview
-              ? preview
-              : 'Personal Design Portfolio - Digital, Product Design, Code, Interactive Installations and more'
+            preview ? preview : 'Sua Revista Semanal sobre filmes e séries'
           }
         />
-        <meta property="og:site_name" content={'Tutu Menezes'}></meta>
+        <meta property="og:site_name" content={'Quatro Atos'}></meta>
         <meta
           property="og:image:secure_url"
           content={dynamicOgImageURL ? dynamicOgImageURL : ogImageUrl}
