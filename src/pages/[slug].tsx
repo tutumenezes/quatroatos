@@ -261,7 +261,7 @@ const RenderPost: FC<Props> = ({ post, redirect, preview }) => {
         </div>
 
         <div className="related-posts main-container">
-          <h3>Read More</h3>
+          <h3>Mais Conteúdo Top</h3>
           <div className="related-posts-list">
             {post.prevPost && (
               <div className="prevPost related-item">
@@ -270,15 +270,9 @@ const RenderPost: FC<Props> = ({ post, redirect, preview }) => {
                     href={getBlogLink(post.prevPost.Slug)}
                     as={getBlogLink(post.prevPost.Slug)}
                   >
-                    <a>
-                      {post.prevPost.Page}
-                      <FiArrowUpRight />
-                    </a>
+                    <a>{post.prevPost.Page}</a>
                   </Link>
                 </span>
-                {/* {post.prevPost.Type && (
-                  <div className="tag"><span>#</span>{post.prevPost.Type}</div>
-                )} */}
               </div>
             )}
             {post.nextPost && (
@@ -293,9 +287,6 @@ const RenderPost: FC<Props> = ({ post, redirect, preview }) => {
                     </a>
                   </Link>
                 </span>
-                {/* {post.nextPost.Type && (
-                  <div className="tag"><span>#</span>{post.nextPost.Type}</div>
-                )} */}
               </div>
             )}
           </div>
