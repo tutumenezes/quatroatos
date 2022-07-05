@@ -244,16 +244,12 @@ const RenderPost: FC<Props> = ({ post, redirect, preview }) => {
         </div>
 
         {post.Link && (
-          <>
-            <ExtLink href={post.Link} as={post.Link}>
-              <div className="podcast-link">
-                <a>
-                  <Spotify />
-                  Escute o episódio
-                </a>
-              </div>
-            </ExtLink>
-          </>
+          <ExtLink href={post.Link} as={post.Link}>
+            <div className="podcast-link">
+              <Spotify />
+              Escute o episódio
+            </div>
+          </ExtLink>
         )}
 
         <div className="post-content main-container">
