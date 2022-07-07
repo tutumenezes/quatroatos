@@ -25,6 +25,11 @@
         width: 50%;
         padding-left: 64px;
       }
+
+      @include mobile {
+        margin-bottom: 64px;
+      }
+
       h3 {
         font-family: $font-serif;
         font-weight: $font-weight--thin;
